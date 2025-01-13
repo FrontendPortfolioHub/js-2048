@@ -1,1 +1,1 @@
-# js-2048
+#  the game is written in pure Java Script
