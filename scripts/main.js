@@ -81,6 +81,10 @@ document.addEventListener('touchmove', (e) => {
 });
 
 document.addEventListener('touchend', () => {
+  if (score === 0) {
+    startButton.classList.replace('start', 'restart');
+    startButton.innerHTML = 'Restart';
+  }
   const diffX = touchEndX - touchStartX;
   const diffY = touchEndY - touchStartY;
 
