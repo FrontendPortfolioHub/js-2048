@@ -16,6 +16,8 @@ const gameScore = document.querySelector('.game-score');
 startButton.addEventListener('click', () => {
   if (startButton.innerHTML === 'Start') {
     messageStart.classList.add('hidden');
+    startButton.classList.replace('start', 'restart');
+    startButton.innerHTML = 'Restart';
     setNewGame();
   } else {
     resetGameField();
@@ -31,11 +33,6 @@ startButton.addEventListener('click', () => {
 
 /* events for arrow buttons */
 document.addEventListener('keyup', (e) => {
-  if (score === 0) {
-    startButton.classList.replace('start', 'restart');
-    startButton.innerHTML = 'Restart';
-  }
-
   if (e.code === 'ArrowLeft') {
     slideLeft();
     newFieldGeneretion();
@@ -81,10 +78,6 @@ document.addEventListener('touchmove', (e) => {
 });
 
 document.addEventListener('touchend', () => {
-  if (score === 0) {
-    startButton.classList.replace('start', 'restart');
-    startButton.innerHTML = 'Restart';
-  }
   const diffX = touchEndX - touchStartX;
   const diffY = touchEndY - touchStartY;
 
