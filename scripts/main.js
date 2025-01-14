@@ -63,6 +63,8 @@ document.addEventListener('keyup', (e) => {
   }
 });
 
+/* mobile navigation */
+
 mobileNavButtons.addEventListener('click', (e) => {
   const upButton = document.querySelector('.up-button');
   const rightButton = document.querySelector('.right-button');
@@ -293,7 +295,6 @@ function isWinner() {
 function isLose() {
   loseMessage.classList.remove('hidden');
   mobileNavButtons.classList.add('hidden');
-
 }
 
 /* check possible of horizontal moving */
