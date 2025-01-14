@@ -36,9 +36,6 @@ startButton.addEventListener('click', () => {
 
 /* events for arrow buttons */
 document.addEventListener('keyup', (e) => {
-  const arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
-
-  if (!arrowKeys.includes(e.code)) return;
 
   if (e.code === 'ArrowLeft') {
     slideLeft();
@@ -62,7 +59,39 @@ document.addEventListener('keyup', (e) => {
   ) {
     isLose();
 
-    // eslint-disable-next-line no-useless-return
+    return;
+  }
+});
+
+mobileNavButtons.addEventListener('click', (e) => {
+  const upButton = document.querySelector('.up-button');
+  const rightButton = document.querySelector('.right-button');
+  const downButton = document.querySelector('.down-button');
+  const leftButton = document.querySelector('.left-button');
+
+  if (e.target === leftButton) {
+    slideLeft();
+    newFieldGeneretion();
+  } else if (e.target === rightButton) {
+    slideRight();
+    newFieldGeneretion();
+  } else if (e.target === upButton) {
+    slideUp();
+    newFieldGeneretion();
+  } else if (e.target === downButton) {
+    slideDown();
+    newFieldGeneretion();
+  }
+
+  gameScore.innerText = score;
+
+  if (
+    !checkPossibleMovVerticaly()
+    && !checkPossibleMovHorizontaly()
+    && !isEmptyCell()
+  ) {
+    isLose();
+
     return;
   }
 });
@@ -91,7 +120,6 @@ function newFieldGeneretion() {
     }
     gameField[r][c] = +newField.innerText;
 
-    // eslint-disable-next-line no-useless-return
     return;
   } else {
     if (!isEmptyCell()) {
@@ -264,6 +292,8 @@ function isWinner() {
 /* appear lose message */
 function isLose() {
   loseMessage.classList.remove('hidden');
+  mobileNavButtons.classList.add('hidden');
+
 }
 
 /* check possible of horizontal moving */
