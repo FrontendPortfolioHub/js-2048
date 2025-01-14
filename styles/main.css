@@ -210,6 +210,11 @@ h1 {
   position: relative;
   top: 35px;
 }
+@media (min-width: 1280px) {
+  .mobile-nav-buttons {
+    display: none;
+  }
+}
 
 .mobile-nav-button {
   position: absolute;
