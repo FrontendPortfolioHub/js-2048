@@ -211,35 +211,38 @@ h1 {
 .mobile-nav-button {
   position: absolute;
   display: flex;
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  box-shadow: 1px -1px 10px 5px rgba(119, 110, 101, 0.25);
+  border-radius: 50%;
 }
 
 .up-button {
-  bottom: 25px;
+  bottom: 15px;
   transform: translateX(-50%);
   background-image: url("../images/keyboard_arrow_up_40dp_BBADA0_FILL0_wght400_GRAD0_opsz40.svg");
 }
 
 .right-button {
-  left: 25px;
+  left: 45px;
   transform: translateY(-50%);
   background-image: url("../images/keyboard_arrow_right_40dp_BBADA0_FILL0_wght400_GRAD0_opsz40.svg");
 }
 
 .down-button {
-  top: 25px;
+  top: 15px;
   transform: translateX(-50%);
   background-image: url("../images/keyboard_arrow_down_40dp_BBADA0_FILL0_wght400_GRAD0_opsz40.svg");
 }
 
 .left-button {
-  right: 25px;
+  right: 45px;
   transform: translateY(-50%);
   background-image: url("../images/keyboard_arrow_left_40dp_BBADA0_FILL0_wght400_GRAD0_opsz40.svg");
 }/*# sourceMappingURL=main.css.map */
