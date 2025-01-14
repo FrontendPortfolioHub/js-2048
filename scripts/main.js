@@ -11,6 +11,7 @@ const messageStart = document.querySelector('.message-start');
 const winMessage = document.querySelector('.message-win');
 const loseMessage = document.querySelector('.message-lose');
 const gameScore = document.querySelector('.game-score');
+const mobileNavButtons = document.querySelector('.mobile-nav-buttons');
 
 /* event for start or restart button */
 startButton.addEventListener('click', () => {
@@ -18,6 +19,7 @@ startButton.addEventListener('click', () => {
     messageStart.classList.add('hidden');
     startButton.classList.replace('start', 'restart');
     startButton.innerHTML = 'Restart';
+    mobileNavButtons.classList.remove('hidden');
     setNewGame();
   } else {
     resetGameField();
@@ -28,11 +30,16 @@ startButton.addEventListener('click', () => {
     startButton.innerHTML = 'Start';
     score = 0;
     gameScore.innerText = score;
+    mobileNavButtons.classList.add('hidden');
   }
 });
 
 /* events for arrow buttons */
 document.addEventListener('keyup', (e) => {
+  const arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
+
+  if (!arrowKeys.includes(e.code)) return;
+
   if (e.code === 'ArrowLeft') {
     slideLeft();
     newFieldGeneretion();
@@ -57,56 +64,6 @@ document.addEventListener('keyup', (e) => {
 
     // eslint-disable-next-line no-useless-return
     return;
-  }
-});
-
-/* events for swipes */
-
-let touchStartX = 0;
-let touchStartY = 0;
-let touchEndX = 0;
-let touchEndY = 0;
-
-document.addEventListener('touchstart', (e) => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-});
-
-document.addEventListener('touchmove', (e) => {
-  touchEndX = e.touches[0].clientX;
-  touchEndY = e.touches[0].clientY;
-});
-
-document.addEventListener('touchend', () => {
-  const diffX = touchEndX - touchStartX;
-  const diffY = touchEndY - touchStartY;
-
-  if (Math.abs(diffX) > Math.abs(diffY)) {
-    if (diffX > 50) {
-      slideRight();
-      newFieldGeneretion();
-    } else if (diffX < -50) {
-      slideLeft();
-      newFieldGeneretion();
-    }
-  } else {
-    if (diffY > 50) {
-      slideDown();
-      newFieldGeneretion();
-    } else if (diffY < -50) {
-      slideUp();
-      newFieldGeneretion();
-    }
-  }
-
-  gameScore.innerText = score;
-
-  if (
-    !checkPossibleMovVerticaly()
-    && !checkPossibleMovHorizontaly()
-    && !isEmptyCell()
-  ) {
-    isLose();
   }
 });
 
